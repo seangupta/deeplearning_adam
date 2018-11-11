@@ -128,7 +128,7 @@ def adam(X, beta1 = 0.9, beta2 = 0.999, gamma = 10**(-8), maxiter = 1000):
         #sample minibatch
         #indices = np.random.choice(range(N), size = m, replace = False)
         #X_mini = X[indices]
-        X_mini = X
+        X_mini = X #CHANGE TO use SGD
                
         #forward pass
         f = E(X_mini.T,W1,W2,b1,b2)
@@ -159,6 +159,7 @@ def adam(X, beta1 = 0.9, beta2 = 0.999, gamma = 10**(-8), maxiter = 1000):
         g_b1 = t_b1/m
         g_b2 = t_b2/m
         
+        #UNCOMMMENT TO USE ADAM
         #update moving averages
         #m_W1 = (beta1 * m_W1 + (1 - beta1) * g_W1) / (1 - beta1 ** k)
         #print "m_W1 = ", np.round(m_W1,20)
@@ -182,6 +183,7 @@ def adam(X, beta1 = 0.9, beta2 = 0.999, gamma = 10**(-8), maxiter = 1000):
         if k % 100 == 1:
             print "eps = ", eps
         
+        #UNCOMMMENT TO USE ADAM
         # #update parameters (note mistake in slides)
         # delta_W1 = eps/(np.sqrt(v_W1) + gamma) * m_W1
         # print "v_W1 = ", np.round(v_W1,2)
@@ -208,6 +210,7 @@ print "W2 = ", W2
 print "b1 = ", b1.T
 print "b2 = ", b2.T
 
+#display reconstructions
 for n in range(10):                
     y = np.atleast_2d(images_array[n]).T
     plt.figure()
